@@ -1,2 +1,7 @@
 allow untrusted_app_all lineage_profile_service:service_manager find;
 allow untrusted_app_all theme_engine_service:service_manager find;
+# Zamezení zbytečného logování (I/O spam) bankovních aplikací v Doze/nečinnosti
+dontaudit untrusted_app proc_kallsyms:file getattr;
+dontaudit untrusted_app proc_keys:file getattr;
+dontaudit untrusted_app proc_modules:file getattr;
+dontaudit untrusted_app selinuxfs:file read;
